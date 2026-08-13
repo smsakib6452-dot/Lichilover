@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /cart.php
+Disallow: /checkout.php
+Disallow: /account.php
+Disallow: /orders.php
+Disallow: /order-detail.php
+Disallow: /login.php
+Disallow: /register.php
+Disallow: /logout.php
+Disallow: /payment-callback.php
+
+Sitemap: /lichi-lover/sitemap.php

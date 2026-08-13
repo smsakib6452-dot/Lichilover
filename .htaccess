@@ -1,0 +1,30 @@
+# Lichi Lover — Apache configuration
+# Works under any XAMPP subdirectory. Standard PHP URLs are used (no rewrites needed).
+
+Options -Indexes
+
+<FilesMatch "\.(sql|log|env)$">
+  Require all denied
+</FilesMatch>
+
+<Files ".env">
+  Require all denied
+</Files>
+
+# Block access to configuration that contains secrets
+<FilesMatch "^(config\.php|database\.php)$">
+  Require all denied
+</FilesMatch>
+
+# Disable directory listing of sensitive folders
+RedirectMatch 403 ^.*/(logs|database)/?$
+
+# Basic security headers
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# Default charset
+AddDefaultCharset UTF-8
