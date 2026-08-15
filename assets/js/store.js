@@ -9,7 +9,7 @@
   'use strict';
 
   var LS_PREFIX = 'll_';
-  var DB_VERSION = '1.1';
+  var DB_VERSION = '1.2';
   var db = {};
   // In-memory fallback for browsers that block localStorage (private mode,
   // strict privacy settings). Keeps the site functional for the page session.
@@ -196,7 +196,7 @@
       var img = s.images[key];
       if (img) return typeof img === 'string' ? img : img.url;
     }
-    return 'https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?auto=format&fit=crop&w=900&q=80';
+    return 'https://images.pexels.com/photos/16820482/pexels-photo-16820482.jpeg?auto=compress&cs=tinysrgb&w=900';
   }
   function imageAlt(key) {
     var s = window.LL_SEED;
