@@ -29,12 +29,18 @@
     ];
   }
 
-  function headerHtml() {
+  function icon(name) {
+    return '<i data-lucide="' + name + '"></i>';
+  }
+
+  function buildShell() {
     var S = window.Store;
-    var admin = S.currentAdmin();
     var page = window.LL_ADMIN_PAGE || '';
     var title = window.LL_ADMIN_TITLE || 'Dashboard';
     var shopName = S.setting('shop_name', 'Lichi Lover');
+    var admin = S.currentAdmin();
+    var name = admin ? (admin.name || 'Admin') : 'Admin';
+    var email = admin ? (admin.email || '') : '';
 
     var unread = 0, pending = 0;
     try {
@@ -49,50 +55,57 @@
       if (it.page === 'messages' && unread > 0) badge = '<span class="nav-badge">' + unread + '</span>';
       if (it.page === 'reviews' && pending > 0) badge = '<span class="nav-badge">' + pending + '</span>';
       return '<a href="' + it.url + '"' + (page === it.page ? ' class="active"' : '') + '>' +
-        '<i data-lucide="' + it.icon + '"></i><span>' + it.label + '</span>' + badge + '</a>';
+        icon(it.icon) + '<span>' + it.label + '</span>' + badge + '</a>';
     }).join('');
 
-    var name = admin ? (admin.name || 'Admin') : 'Admin';
-    var email = admin ? (admin.email || '') : '';
-    return '' +
-      '<div class="admin-shell">' +
-      '<aside class="admin-sidebar" id="adminSidebar">' +
+    var shell = document.createElement('div');
+    shell.className = 'admin-shell';
+
+    var aside = document.createElement('aside');
+    aside.className = 'admin-sidebar';
+    aside.id = 'adminSidebar';
+    aside.innerHTML =
       '<a href="index.html" class="admin-brand">' +
       '<img src="' + asset('images/logo.svg') + '" alt="' + S.esc(shopName) + ' logo" width="34" height="34">' +
       '<span>' + S.esc(shopName) + '<small>Admin Panel</small></span></a>' +
       '<nav class="admin-nav">' + nav +
-      '<a href="../index.html" target="_blank" rel="noopener"><i data-lucide="external-link"></i><span>View Site</span></a>' +
-      '</nav></aside>' +
-      '<div class="admin-main">' +
-      '<header class="admin-topbar">' +
-      '<button class="admin-menu-btn" id="adminMenuBtn" aria-label="Toggle menu"><i data-lucide="menu"></i></button>' +
+      '<a href="../index.html" target="_blank" rel="noopener">' + icon('external-link') + '<span>View Site</span></a>' +
+      '</nav>';
+
+    var mainWrap = document.createElement('div');
+    mainWrap.className = 'admin-main';
+
+    var topbar = document.createElement('header');
+    topbar.className = 'admin-topbar';
+    topbar.innerHTML =
+      '<button class="admin-menu-btn" id="adminMenuBtn" aria-label="Toggle menu">' + icon('menu') + '</button>' +
       '<h1 class="admin-page-title">' + S.esc(title) + '</h1>' +
       '<div class="admin-user">' +
       '<span class="admin-avatar">' + S.esc(name.charAt(0).toUpperCase()) + '</span>' +
       '<div><strong>' + S.esc(name) + '</strong><span>' + S.esc(email) + '</span></div>' +
-      '<a href="#" class="btn btn-ghost btn-sm" id="adminLogout" title="Logout"><i data-lucide="log-out"></i></a>' +
-      '</div></header>' +
-      '<main class="admin-content">' +
-      '<div id="adminAlerts"></div>';
-  }
+      '<a href="#" class="btn btn-ghost btn-sm" id="adminLogout" title="Logout">' + icon('log-out') + '</a>' +
+      '</div>';
 
-  function footerHtml() {
-    var S = window.Store;
-    var shopName = S.setting('shop_name', 'Lichi Lover');
-    return '' +
-      '</main>' +
-      '<footer class="admin-footer"><p>&copy; ' + new Date().getFullYear() + ' ' + S.esc(shopName) +
-      ' &mdash; static demo &middot; <span class="demo-flag">Demo payment mode</span></p></footer>' +
-      '</div></div>';
+    var footer = document.createElement('footer');
+    footer.className = 'admin-footer';
+    footer.innerHTML = '<p>&copy; ' + new Date().getFullYear() + ' ' + S.esc(shopName) +
+      ' &mdash; static demo &middot; <span class="demo-flag">Demo payment mode</span></p>';
+
+    mainWrap.appendChild(topbar);
+    mainWrap.appendChild(footer);
+    shell.appendChild(aside);
+    shell.appendChild(mainWrap);
+
+    return { shell: shell, mainWrap: mainWrap };
   }
 
   function showAlert(message, type, sticky) {
     type = type || 'error';
     var div = document.createElement('div');
     div.className = 'alert alert-' + type;
-    var icon = type === 'success' ? 'check-circle' : (type === 'warning' ? 'alert-triangle' : 'x-circle');
+    var iconName = type === 'success' ? 'check-circle' : (type === 'warning' ? 'alert-triangle' : 'x-circle');
     div.style.cssText = 'position:fixed;top:16px;right:16px;z-index:60;max-width:360px;box-shadow:var(--shadow-md);animation:fadeIn .2s;align-items:center';
-    div.innerHTML = '<i data-lucide="' + icon + '"></i><span>' + window.Store.esc(message) + '</span>';
+    div.innerHTML = '<i data-lucide="' + iconName + '"></i><span>' + window.Store.esc(message) + '</span>';
     var close = document.createElement('button');
     close.type = 'button';
     close.style.cssText = 'margin-left:auto;background:none;border:none;font-size:20px;line-height:1;cursor:pointer;color:inherit';
@@ -123,8 +136,31 @@
 
     var h = document.getElementById('admin-header');
     var f = document.getElementById('admin-footer');
-    if (h) h.innerHTML = headerHtml();
-    if (f) f.innerHTML = footerHtml();
+    if (!h || !f) return;
+
+    // Gather the page's own content sitting between the two placeholders.
+    var contentNodes = [];
+    var node = h.nextSibling;
+    while (node && node !== f) {
+      var next = node.nextSibling;
+      contentNodes.push(node);
+      node = next;
+    }
+
+    // The real content <main> wraps the page's markup (not just a string,
+    // so it cannot be auto-closed by the HTML parser).
+    var content = document.createElement('main');
+    content.className = 'admin-content';
+    contentNodes.forEach(function (c) { content.appendChild(c); });
+
+    var parts = buildShell();
+    // Insert <main> between topbar and footer.
+    parts.mainWrap.insertBefore(content, parts.mainWrap.querySelector('footer.admin-footer'));
+
+    var parent = h.parentNode;
+    parent.insertBefore(parts.shell, f);
+    h.remove();
+    f.remove();
 
     var logout = document.getElementById('adminLogout');
     if (logout) {
