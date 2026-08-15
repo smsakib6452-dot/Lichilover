@@ -1,6 +1,6 @@
-# Lichi Lover — Static Site (GitHub Pages)
+# Litchi Lover — Static Site (GitHub Pages)
 
-A 100% static, zero-backend version of the Lichi Lover e-commerce store and admin
+A 100% static, zero-backend version of the Litchi Lover e-commerce store and admin
 panel. Everything runs in the browser on `localStorage` (seeded from
 `assets/js/data.js`). No PHP, no MySQL, no build step.
 
@@ -11,8 +11,8 @@ server other than any static file host.
 
 | Role | Email |
 | --- | --- |
-| Admin | `admin@lichilover.com` |
-| Customer | `customer@lichilover.com` |
+| Admin | `admin@litchilover.com` |
+| Customer | `customer@litchilover.com` |
 
 Passwords are only defined in the development seed (`assets/js/data.js`) and are
 not shown on any public page.
@@ -78,7 +78,7 @@ Pages-compatible host and it works as-is.
 ### Subdirectory hosting
 
 The site is already subpath-friendly. If deployed under a path (e.g.
-`https://user.github.io/lichi-lover/`), set:
+`https://user.github.io/litchi-lover/`), set:
 
 ```html
 <script>window.LL_ASSET_BASE = './';</script>

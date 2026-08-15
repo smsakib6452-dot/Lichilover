@@ -1,5 +1,5 @@
 /* ============================================================
-   Lichi Lover — admin.js
+   Litchi Lover — admin.js
    Sidebar toggle, lucide icons, charts, loading states, confirm dialogs.
    ============================================================ */
 

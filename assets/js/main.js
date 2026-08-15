@@ -1,5 +1,5 @@
 /* ============================================================
-   Lichi Lover — main.js (static edition)
+   Litchi Lover — main.js (static edition)
    Renders products, cart, checkout, orders, reviews, etc.
    using the localStorage Store layer. No backend required.
    ============================================================ */
@@ -336,7 +336,7 @@
         var email = form.querySelector('input[name="email"]').value;
         if (!S.isValidEmail(email)) { showToast('Please enter a valid email address.', 'error'); return; }
         S.newsletterSubscribe(email.trim().toLowerCase());
-        showToast('Thanks for subscribing! Fresh lichi updates are on the way.', 'success');
+        showToast('Thanks for subscribing! Fresh litchi updates are on the way.', 'success');
         form.reset();
       });
     });
@@ -393,9 +393,9 @@
     }
     // Hero content from settings
     var heroHeadline = document.getElementById('heroHeadline');
-    if (heroHeadline) heroHeadline.textContent = S.setting('hero_headline', 'Fresh Lichi, Straight to Your Door');
+    if (heroHeadline) heroHeadline.textContent = S.setting('hero_headline', 'Fresh Litchi, Straight to Your Door');
     var heroSub = document.getElementById('heroSubheadline');
-    if (heroSub) heroSub.textContent = S.setting('hero_subheadline', 'Enjoy naturally sweet, juicy and freshly selected lichi delivered across Bangladesh.');
+    if (heroSub) heroSub.textContent = S.setting('hero_subheadline', 'Enjoy naturally sweet, juicy and freshly selected litchi delivered across Bangladesh.');
     var heroTag = document.getElementById('heroTag');
     if (heroTag) heroTag.textContent = S.setting('shop_tagline', 'Freshness You Can Taste.');
     initLucide();
@@ -519,7 +519,7 @@
     var totalStock = 0;
     variants.forEach(function (v) { totalStock += Number(v.stock_qty) || 0; });
 
-    document.title = product.name + ' — Lichi Lover';
+    document.title = product.name + ' — Litchi Lover';
 
     // Crumb
     var crumbCat = document.getElementById('crumbCategory');
@@ -627,7 +627,7 @@
           '<div class="rating-input" id="ratingInput"><input type="hidden" name="rating" value="5">' +
           [1, 2, 3, 4, 5].map(function (i) { return '<button type="button" data-value="' + i + '" class="active" aria-label="' + i + ' stars">★</button>'; }).join('') +
           '</div></div>' +
-          '<div class="form-field"><label>Your Review</label><textarea name="review" rows="4" placeholder="Share your experience with this lichi..." maxlength="1000"></textarea></div>' +
+          '<div class="form-field"><label>Your Review</label><textarea name="review" rows="4" placeholder="Share your experience with this litchi..." maxlength="1000"></textarea></div>' +
           '<button type="submit" class="btn btn-primary" style="margin-top:12px">Submit Review</button>' +
           '<p style="font-size:12px;color:var(--muted);margin-top:8px">Reviews are moderated and will appear after approval.</p>' +
           '</form></div>';
@@ -1118,7 +1118,7 @@
     var steps = [
       { key: 'pending', label: 'Order Placed', desc: 'We received your order' },
       { key: 'confirmed', label: 'Confirmed', desc: 'Order confirmed by our team' },
-      { key: 'processing', label: 'Processing', desc: 'Fresh lichi being packed' },
+      { key: 'processing', label: 'Processing', desc: 'Fresh litchi being packed' },
       { key: 'shipped', label: 'Shipped', desc: 'On the way to your address' },
       { key: 'delivered', label: 'Delivered', desc: 'Delivered to your doorstep' }
     ];

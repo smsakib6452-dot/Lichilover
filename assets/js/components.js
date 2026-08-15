@@ -1,5 +1,5 @@
 /* ============================================================
-   Lichi Lover — Components
+   Litchi Lover — Components
    Injects the shared announcement bar, navbar and footer into
    every page via #site-header / #site-footer placeholders.
    Also bootstraps the data store.
@@ -20,8 +20,8 @@
     var S = window.Store;
     var user = S.currentUser();
     var count = S.cartCount();
-    var announcement = S.setting('announcement', 'Fresh Lichi Delivered to Your Door 🍒');
-    var shopName = S.setting('shop_name', 'Lichi Lover');
+    var announcement = S.setting('announcement', 'Fresh Litchi Delivered to Your Door 🍒');
+    var shopName = S.setting('shop_name', 'Litchi Lover');
 
     return '' +
       '<div class="announcement-bar">' +
@@ -63,7 +63,7 @@
       '<div class="search-overlay" id="searchOverlay" hidden>' +
       '  <div class="search-overlay-content">' +
       '    <form action="shop.html" method="get" class="search-form" role="search">' +
-      '      <input type="search" name="q" placeholder="Search lichi, boxes, combos..." aria-label="Search products" autocomplete="off">' +
+      '      <input type="search" name="q" placeholder="Search litchi, boxes, combos..." aria-label="Search products" autocomplete="off">' +
       '      <button type="submit" class="btn btn-primary"><i data-lucide="search" style="width:18px;height:18px"></i> Search</button>' +
       '    </form>' +
       '    <button class="search-close" data-search-toggle aria-label="Close search"><i data-lucide="x"></i></button>' +
@@ -73,9 +73,9 @@
 
   function footerHtml() {
     var S = window.Store;
-    var shopName = S.setting('shop_name', 'Lichi Lover');
+    var shopName = S.setting('shop_name', 'Litchi Lover');
     var tagline = S.setting('shop_tagline', 'Freshness You Can Taste.');
-    var shopEmail = S.setting('shop_email', 'hello@lichilover.example');
+    var shopEmail = S.setting('shop_email', 'hello@litchilover.example');
     var shopPhone = S.setting('shop_phone', '');
     var shopAddress = S.setting('shop_address', '');
     var whatsapp = S.setting('whatsapp_number', '');

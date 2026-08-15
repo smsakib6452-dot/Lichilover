@@ -11,4 +11,4 @@ Disallow: /order-detail.html
 Disallow: /login.html
 Disallow: /register.html
 
-Sitemap: https://smsakib6452-dot.github.io/Lichilover/sitemap.xml
+Sitemap: https://smsakib6452-dot.github.io/Litchilover/sitemap.xml

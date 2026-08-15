@@ -1,5 +1,5 @@
 /* ============================================================
-   Lichi Lover — admin-pages.js
+   Litchi Lover — admin-pages.js
    Renders and wires all admin pages against window.Store.
    Requires: data.js, store.js, admin-components.js
    ============================================================ */
@@ -390,7 +390,7 @@
         '<tr>' +
         '<td>' + p.id + '</td>' +
         '<td><div style="display:flex;gap:10px;align-items:center">' +
-        '<img src="' + esc(p.image || S.imageUrl('lychee_live')) + '" alt="" style="width:44px;height:44px;border-radius:8px;object-fit:cover">' +
+        '<img src="' + esc(p.image || S.imageUrl('litchi_live')) + '" alt="" style="width:44px;height:44px;border-radius:8px;object-fit:cover">' +
         '<div><strong>' + esc(p.name) + '</strong>' +
         '<div style="font-size:12px;color:var(--muted)">' + variants.length + ' variants</div></div></div></td>' +
         '<td>' + esc(cat ? cat.name : '\u2014') + '</td>' +
@@ -456,7 +456,7 @@
       var preview = document.getElementById('imagePreview');
       if (preview) {
         preview.style.display = 'block';
-        preview.src = product.image || S.imageUrl('lychee_live');
+        preview.src = product.image || S.imageUrl('litchi_live');
       }
 
       // Variants

@@ -1,5 +1,5 @@
 /* ============================================================
-   Lichi Lover — Store (data layer)
+   Litchi Lover — Store (data layer)
    Replaces the PHP/MySQL backend with localStorage.
    - Hydrates seed data from window.LL_SEED on first load
    - Provides cart, auth, orders, reviews, messages, settings
@@ -9,7 +9,7 @@
   'use strict';
 
   var LS_PREFIX = 'll_';
-  var DB_VERSION = '1.2';
+  var DB_VERSION = '1.3';
   var db = {};
   // In-memory fallback for browsers that block localStorage (private mode,
   // strict privacy settings). Keeps the site functional for the page session.
@@ -203,7 +203,7 @@
     if (s && s.images && s.images[key] && typeof s.images[key] === 'object') {
       return s.images[key].alt;
     }
-    return 'Lichi Lover fruit';
+    return 'Litchi Lover fruit';
   }
   function starsHtml(rating, max) {
     max = max || 5;
@@ -282,9 +282,9 @@
       id: p.id,
       name: p.name,
       slug: p.slug,
-      category_name: cat ? cat.name : 'Lichi',
+      category_name: cat ? cat.name : 'Litchi',
       category_slug: cat ? cat.slug : '',
-      image: p.image || imageUrl('lychee_live'),
+      image: p.image || imageUrl('litchi_live'),
       min_price: productMinPrice(p),
       compare_price: p.compare_price,
       stock_qty: p.stock_qty,
@@ -326,7 +326,7 @@
         product_id: product.id,
         product_name: product.name,
         slug: product.slug,
-        image: product.image || imageUrl('lychee_live'),
+        image: product.image || imageUrl('litchi_live'),
         variant_name: variant.name,
         weight: Number(variant.weight) || 0,
         unit_price: Number(variant.price),
@@ -772,7 +772,7 @@
     var minPrice = Math.min.apply(null, prices);
     var totalStock = 0;
     variants.forEach(function (v) { totalStock += Number(v.stock) || 0; });
-    var image = String(data.image || '').trim() || imageUrl('lychee_live');
+    var image = String(data.image || '').trim() || imageUrl('litchi_live');
     var product = {
       id: id,
       category_id: Number(data.category_id),

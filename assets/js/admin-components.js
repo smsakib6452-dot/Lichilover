@@ -1,5 +1,5 @@
 /* ============================================================
-   Lichi Lover — admin-components.js
+   Litchi Lover — admin-components.js
    Injects the admin sidebar / topbar / footer shell.
    Placeholders: #admin-header (opens shell + sidebar + topbar),
                  #admin-footer (closes content, adds footer).
@@ -37,7 +37,7 @@
     var S = window.Store;
     var page = window.LL_ADMIN_PAGE || '';
     var title = window.LL_ADMIN_TITLE || 'Dashboard';
-    var shopName = S.setting('shop_name', 'Lichi Lover');
+    var shopName = S.setting('shop_name', 'Litchi Lover');
     var admin = S.currentAdmin();
     var name = admin ? (admin.name || 'Admin') : 'Admin';
     var email = admin ? (admin.email || '') : '';
