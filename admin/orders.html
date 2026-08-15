@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orders — Lichi Lover Admin</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/admin.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+window.LL_ASSET_BASE = '../';
+window.LL_ADMIN_PAGE = 'orders';
+window.LL_ADMIN_TITLE = 'Orders';
+</script>
+</head>
+<body>
+<div id="admin-header"></div>
+
+<div class="filter-bar">
+    <form id="ordersFilterForm" style="display:flex;gap:8px;flex-wrap:wrap;flex:1">
+        <input type="search" name="q" placeholder="Search order #, name, phone..." style="min-width:220px">
+        <select name="status">
+            <option value="all">All statuses</option>
+            <option value="pending">Pending</option>
+            <option value="confirmed">Confirmed</option>
+            <option value="processing">Processing</option>
+            <option value="shipped">Shipped</option>
+            <option value="delivered">Delivered</option>
+            <option value="cancelled">Cancelled</option>
+        </select>
+        <button type="submit" class="btn btn-ghost btn-sm">Filter</button>
+    </form>
+</div>
+
+<div class="admin-card">
+    <div class="table-wrap">
+        <table class="data">
+            <thead>
+                <tr>
+                    <th>Order</th>
+                    <th>Customer</th>
+                    <th>Phone</th>
+                    <th>District</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th>Payment</th>
+                    <th>Date</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="ordersBody"></tbody>
+        </table>
+    </div>
+    <div id="ordersPagination"></div>
+</div>
+
+<div id="admin-footer"></div>
+
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/store.js"></script>
+<script src="../assets/js/admin-components.js"></script>
+<script src="../assets/js/admin-pages.js"></script>
+<script src="../assets/js/admin.js"></script>
+</body>
+</html>

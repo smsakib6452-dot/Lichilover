@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Account — Lichi Lover</title>
+<meta name="description" content="Manage your Lichi Lover account.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="account.html">
+<link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+window.LL_PAGE = 'account';
+</script>
+</head>
+<body class="page-account">
+<div id="site-header"></div>
+
+<main>
+  <div class="crumbs">
+    <div class="container">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li>My Account</li>
+      </ul>
+    </div>
+  </div>
+
+  <section class="section" style="padding-top:8px">
+    <div class="container">
+      <div class="section-head" style="text-align:left;margin-bottom:24px">
+        <span class="section-eyebrow">Dashboard</span>
+        <h2 id="accountGreeting">Hello, lichi lover 👋</h2>
+      </div>
+
+      <div class="account-nav" style="margin-bottom:28px">
+        <a href="account.html" class="active">Profile</a>
+        <a href="orders.html">My Orders</a>
+        <a href="shop.html">Shop</a>
+        <a href="#" id="logoutLink">Logout</a>
+      </div>
+
+      <div class="account-layout">
+        <div class="checkout-form-card">
+          <h3 style="margin-bottom:16px">Profile Information</h3>
+          <form id="profileForm">
+            <div class="form-grid">
+              <div class="form-field">
+                <label>Full Name</label>
+                <input type="text" name="name" id="accName" required>
+              </div>
+              <div class="form-field">
+                <label>Email</label>
+                <input type="email" name="email" id="accEmail" required>
+              </div>
+              <div class="form-field">
+                <label>Phone</label>
+                <input type="tel" name="phone" id="accPhone" required>
+              </div>
+              <div class="form-field">
+                <label>Member Since</label>
+                <input type="text" id="accSince" value="Recently" disabled>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary" style="margin-top:16px">Save Changes</button>
+          </form>
+        </div>
+
+        <div class="checkout-form-card">
+          <h3 style="margin-bottom:16px">Change Password</h3>
+          <form id="passwordForm">
+            <div class="form-field" style="margin-bottom:14px">
+              <label>Current Password</label>
+              <input type="password" name="current_password" required>
+            </div>
+            <div class="form-field" style="margin-bottom:14px">
+              <label>New Password</label>
+              <input type="password" name="new_password" placeholder="At least 8 characters" required>
+            </div>
+            <div class="form-field" style="margin-bottom:16px">
+              <label>Confirm New Password</label>
+              <input type="password" name="confirm_password" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Update Password</button>
+          </form>
+        </div>
+      </div>
+
+      <div style="margin-top:32px;display:none" id="recentOrdersWrap">
+        <h3 style="margin-bottom:14px;color:var(--green-900)">Recent Orders</h3>
+        <div class="table-wrap">
+          <table class="data">
+            <thead>
+              <tr>
+                <th>Order</th>
+                <th>Date</th>
+                <th>Total</th>
+                <th>Status</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="recentOrdersBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/store.js"></script>
+<script src="assets/js/components.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+(function () {
+  var link = document.getElementById('logoutLink');
+  if (link) {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      window.Store.logoutUser();
+      window.location.href = 'index.html';
+    });
+  }
+})();
+</script>
+</body>
+</html>

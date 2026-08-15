@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout — Lichi Lover</title>
+<meta name="description" content="Complete your lichi order — delivery details and payment.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="checkout.html">
+<link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+window.LL_PAGE = 'checkout';
+</script>
+</head>
+<body class="page-checkout">
+<div id="site-header"></div>
+
+<main>
+  <div class="crumbs">
+    <div class="container">
+      <ul>
+        <li><a href="cart.html">Cart</a></li>
+        <li>Checkout</li>
+      </ul>
+    </div>
+  </div>
+
+  <section class="section" style="padding-top:8px">
+    <div class="container">
+      <div class="section-head" style="text-align:left;margin-bottom:24px">
+        <span class="section-eyebrow">Almost There</span>
+        <h2>Checkout</h2>
+      </div>
+
+      <div class="cart-empty" id="checkoutEmpty" style="display:none">
+        <i data-lucide="shopping-basket"></i>
+        <h2>Your cart is empty</h2>
+        <p>Add some fresh lichi before checking out.</p>
+        <a href="shop.html" class="btn btn-primary btn-lg">Shop Fresh Lichi</a>
+      </div>
+
+      <div id="checkoutContent" style="display:none">
+        <div id="checkoutGeneralError"></div>
+
+        <div class="checkout-layout">
+          <form method="get" action="pay.html" class="checkout-form" id="checkoutForm">
+            <div class="checkout-form-card">
+              <h3><span class="step-num">1</span> Contact Information</h3>
+              <div class="form-grid">
+                <div class="form-field">
+                  <label>Full Name <span class="req">*</span></label>
+                  <input type="text" name="full_name" id="coFullName" placeholder="e.g. Karim Ahmed" required>
+                </div>
+                <div class="form-field">
+                  <label>Phone <span class="req">*</span></label>
+                  <input type="tel" name="phone" id="coPhone" placeholder="017XXXXXXXX" required>
+                </div>
+                <div class="form-field full">
+                  <label>Email <span class="req">*</span></label>
+                  <input type="email" name="email" id="coEmail" placeholder="you@example.com" required>
+                </div>
+              </div>
+            </div>
+
+            <div class="checkout-form-card">
+              <h3><span class="step-num">2</span> Delivery Address</h3>
+              <div class="form-grid">
+                <div class="form-field">
+                  <label>Division <span class="req">*</span></label>
+                  <select name="division" id="divisionSelect" required>
+                    <option value="">Select division</option>
+                  </select>
+                </div>
+                <div class="form-field">
+                  <label>District <span class="req">*</span></label>
+                  <select name="district" id="districtSelect" required>
+                    <option value="">Select district</option>
+                  </select>
+                </div>
+                <div class="form-field">
+                  <label>Upazila / Thana <span class="req">*</span></label>
+                  <input type="text" name="upazila" placeholder="e.g. Shahbag" required>
+                </div>
+                <div class="form-field full">
+                  <label>Full Address <span class="req">*</span></label>
+                  <textarea name="address" rows="3" placeholder="House, road, area, landmark..." required></textarea>
+                </div>
+                <div class="form-field full">
+                  <label>Delivery Note (optional)</label>
+                  <textarea name="delivery_note" rows="2" placeholder="Anything we should know?"></textarea>
+                </div>
+              </div>
+            </div>
+
+            <div class="checkout-form-card">
+              <h3><span class="step-num">3</span> Payment Method</h3>
+              <div class="demo-banner">
+                <i data-lucide="flask-conical"></i>
+                <span><strong>Demo Payment Mode</strong> — no real money will be charged. Payments are simulated for development.</span>
+              </div>
+              <div class="pay-methods">
+                <label class="pay-method">
+                  <input type="radio" name="payment_method" value="cod" checked>
+                  <span class="pay-icon cod">COD</span>
+                  <span class="pay-info">
+                    <b>Cash on Delivery</b>
+                    <span>Pay in cash when your lichi arrives</span>
+                  </span>
+                </label>
+                <label class="pay-method">
+                  <input type="radio" name="payment_method" value="bkash">
+                  <span class="pay-icon bkash">bKash</span>
+                  <span class="pay-info">
+                    <b>bKash</b>
+                    <span>Pay securely with your bKash account</span>
+                  </span>
+                </label>
+                <label class="pay-method">
+                  <input type="radio" name="payment_method" value="nagad">
+                  <span class="pay-icon nagad">Nagad</span>
+                  <span class="pay-info">
+                    <b>Nagad</b>
+                    <span>Pay securely with your Nagad account</span>
+                  </span>
+                </label>
+              </div>
+              <div class="form-field" style="margin-top:16px">
+                <label>Coupon Code (optional)</label>
+                <input type="text" name="coupon_code" placeholder="e.g. WELCOME10" autocomplete="off">
+                <p style="font-size:12px;color:var(--muted);margin-top:6px">Try WELCOME10, SAVE50 or FRESH15.</p>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg btn-block" style="max-width:420px">
+              Place Order <i data-lucide="arrow-right"></i>
+            </button>
+          </form>
+
+          <div class="cart-summary">
+            <h3>Order Summary</h3>
+            <div class="order-summary-list" id="checkoutSummaryItems"></div>
+            <div class="summary-row"><span>Subtotal</span><span id="coSubtotal">—</span></div>
+            <div class="summary-row"><span>Delivery</span><span id="deliveryFeeDisplay">Calculated at next step</span></div>
+            <div class="summary-row total"><span>Total</span><span id="totalDisplay">—</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/store.js"></script>
+<script src="assets/js/components.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coupons — Lichi Lover Admin</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/admin.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+window.LL_ASSET_BASE = '../';
+window.LL_ADMIN_PAGE = 'coupons';
+window.LL_ADMIN_TITLE = 'Coupons';
+</script>
+</head>
+<body>
+<div id="admin-header"></div>
+
+<div class="admin-card">
+    <div class="card-head">
+        <h3>Coupons</h3>
+        <a href="coupon-add.html" class="btn btn-primary"><i data-lucide="plus"></i> Add Coupon</a>
+    </div>
+    <div class="table-wrap">
+        <table class="data">
+            <thead>
+                <tr>
+                    <th>Code</th>
+                    <th>Type</th>
+                    <th>Value</th>
+                    <th>Min Order</th>
+                    <th>Max Discount</th>
+                    <th>Expires</th>
+                    <th>Usage</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="couponsBody"></tbody>
+        </table>
+    </div>
+</div>
+
+<div id="admin-footer"></div>
+
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/store.js"></script>
+<script src="../assets/js/admin-components.js"></script>
+<script src="../assets/js/admin-pages.js"></script>
+<script src="../assets/js/admin.js"></script>
+</body>
+</html>

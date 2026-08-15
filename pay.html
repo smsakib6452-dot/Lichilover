@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment — Lichi Lover</title>
+<meta name="description" content="Complete your payment.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="pay.html">
+<link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+window.LL_PAGE = 'pay';
+</script>
+</head>
+<body class="page-pay">
+<div id="site-header"></div>
+
+<main>
+  <div class="not-found" id="payNotFound" style="display:none">
+    <h1>404</h1>
+    <h2>Order not found</h2>
+    <p>We could not find this order. Please check your order number.</p>
+    <a href="index.html" class="btn btn-primary">Back Home</a>
+  </div>
+
+  <div id="payContent">
+    <div class="crumbs">
+      <div class="container">
+        <ul>
+          <li><a href="cart.html">Cart</a></li>
+          <li>Payment</li>
+        </ul>
+      </div>
+    </div>
+
+    <section class="section" style="padding-top:8px">
+      <div class="container" style="max-width:640px">
+        <div class="section-head">
+          <span class="section-eyebrow">Secure Checkout</span>
+          <h2>Complete Your Payment</h2>
+        </div>
+
+        <div class="checkout-form-card" style="max-width:640px;margin:0 auto">
+          <div style="text-align:center;margin-bottom:20px">
+            <div class="pay-icon" style="width:64px;height:64px;border-radius:16px;font-size:18px;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;color:#fff" id="payMethodBadge">—</div>
+            <h3 style="color:var(--green-900)" id="payMethodLabel">Payment</h3>
+            <p class="order-no" style="margin-top:8px" id="payOrderNumber">—</p>
+          </div>
+
+          <div class="order-summary-list" id="payItems"></div>
+
+          <div class="summary-row"><span>Subtotal</span><span id="paySubtotal">—</span></div>
+          <div class="summary-row"><span>Delivery</span><span id="payDelivery">—</span></div>
+          <div class="summary-row discount" id="payDiscountRow" style="display:none"><span>Discount</span><span>—</span></div>
+          <div class="summary-row total"><span>Total Payable</span><span id="payTotal">—</span></div>
+
+          <div class="demo-banner" style="margin-top:16px">
+            <i data-lucide="flask-conical"></i>
+            <span><strong>Demo Payment Mode</strong> — no real money will be charged. The transaction below is simulated for development.</span>
+          </div>
+
+          <form method="get" action="order-success.html" class="pay-form" id="payForm" style="margin-top:18px" data-loading>
+            <button type="submit" class="btn btn-primary btn-lg btn-block" id="paySubmitBtn">Complete Payment</button>
+            <p style="font-size:13px;color:var(--muted);text-align:center;margin-top:12px">This simulates the payment flow. No real transaction occurs.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/store.js"></script>
+<script src="assets/js/components.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

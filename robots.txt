@@ -1,14 +1,14 @@
 User-agent: *
 Allow: /
 Disallow: /admin/
-Disallow: /cart.php
-Disallow: /checkout.php
-Disallow: /account.php
-Disallow: /orders.php
-Disallow: /order-detail.php
-Disallow: /login.php
-Disallow: /register.php
-Disallow: /logout.php
-Disallow: /payment-callback.php
+Disallow: /cart.html
+Disallow: /checkout.html
+Disallow: /pay.html
+Disallow: /order-success.html
+Disallow: /account.html
+Disallow: /orders.html
+Disallow: /order-detail.html
+Disallow: /login.html
+Disallow: /register.html
 
-Sitemap: /lichi-lover/sitemap.php
+Sitemap: https://smsakib6452-dot.github.io/Lichilover/sitemap.xml

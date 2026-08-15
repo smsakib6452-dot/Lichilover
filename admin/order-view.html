@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order View — Lichi Lover Admin</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/admin.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+window.LL_ASSET_BASE = '../';
+window.LL_ADMIN_PAGE = 'order-view';
+window.LL_ADMIN_TITLE = 'Order View';
+</script>
+</head>
+<body>
+<div id="admin-header"></div>
+
+<div class="alert alert-error" id="orderNotFound" style="display:none">
+    <i data-lucide="alert-circle"></i>
+    <span>Order not found. <a href="orders.html">Back to Orders</a></span>
+</div>
+
+<div id="orderContent" style="display:none">
+    <div class="filter-bar">
+        <a href="orders.html" class="btn btn-ghost btn-sm">&larr; Back to Orders</a>
+        <div class="spacer"></div>
+        <a href="index.html" class="btn btn-ghost btn-sm">Back to Dashboard</a>
+    </div>
+
+    <div class="order-detail-grid">
+        <div>
+            <div class="admin-card">
+                <h3 id="ovNumber">—</h3>
+                <p style="color:var(--muted);font-size:14px;margin-bottom:12px">
+                    <span id="ovPlaced">—</span>
+                    &middot; <span id="ovUpdated">—</span>
+                </p>
+                <div id="ovBadges" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px"></div>
+
+                <h4 style="margin-bottom:8px;color:var(--green-900)">Items</h4>
+                <div class="table-wrap">
+                    <table class="data">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Variant</th>
+                                <th>Qty</th>
+                                <th>Price</th>
+                                <th>Line Total</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ovItemsBody"></tbody>
+                    </table>
+                </div>
+
+                <div style="max-width:340px;margin-top:14px">
+                    <div class="summary-row" style="display:flex;justify-content:space-between;padding:4px 0"><span>Subtotal</span><span id="ovSubtotal">—</span></div>
+                    <div class="summary-row" style="display:flex;justify-content:space-between;padding:4px 0"><span>Delivery</span><span id="ovDelivery">—</span></div>
+                    <div class="summary-row" id="ovDiscountRow" style="display:none;justify-content:space-between;padding:4px 0;color:var(--green-600)">
+                        <span>Discount<span class="ov-coupon"></span></span><span class="ov-discount"></span>
+                    </div>
+                    <div class="summary-row" style="display:flex;justify-content:space-between;padding:8px 0;font-weight:800;border-top:2px solid var(--line);margin-top:6px">
+                        <span>Total</span><span id="ovTotal">—</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="admin-card">
+                <h3>Customer &amp; Delivery</h3>
+                <p id="ovCustomer">—</p>
+                <p style="margin-top:8px" id="ovAddress">—</p>
+                <p id="ovNote" style="margin-top:8px;color:var(--muted);display:none"></p>
+            </div>
+        </div>
+
+        <div>
+            <div class="admin-card">
+                <h3>Update Order</h3>
+                <form id="orderStatusForm">
+                    <input type="hidden" name="action" value="update_status">
+                    <div class="form-field" style="margin-bottom:10px">
+                        <label>Order Status</label>
+                        <select name="status">
+                            <option value="pending">Pending</option>
+                            <option value="confirmed">Confirmed</option>
+                            <option value="processing">Processing</option>
+                            <option value="shipped">Shipped</option>
+                            <option value="delivered">Delivered</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Update Status</button>
+                </form>
+            </div>
+
+            <div class="admin-card">
+                <h3>Payment</h3>
+                <form id="paymentStatusForm">
+                    <input type="hidden" name="action" value="update_payment">
+                    <div class="form-field" style="margin-bottom:10px">
+                        <label>Payment Status</label>
+                        <select name="payment_status">
+                            <option value="pending">Pending</option>
+                            <option value="processing">Processing</option>
+                            <option value="paid">Paid</option>
+                            <option value="failed">Failed</option>
+                            <option value="refunded">Refunded</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Update Payment</button>
+                </form>
+                <p style="font-size:12px;color:var(--muted);margin-top:10px">Payment status is normally set automatically by the payment gateway.</p>
+            </div>
+
+            <div class="admin-card">
+                <h3>Payments Recorded</h3>
+                <div id="paymentsRecorded"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="admin-footer"></div>
+
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/store.js"></script>
+<script src="../assets/js/admin-components.js"></script>
+<script src="../assets/js/admin-pages.js"></script>
+<script src="../assets/js/admin.js"></script>
+</body>
+</html>

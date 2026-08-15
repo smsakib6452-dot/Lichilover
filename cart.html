@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Cart — Lichi Lover</title>
+<meta name="description" content="Review your cart and checkout for fresh lichi delivery.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="cart.html">
+<link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+window.LL_PAGE = 'cart';
+</script>
+</head>
+<body class="page-cart">
+<div id="site-header"></div>
+
+<main>
+  <div class="crumbs">
+    <div class="container">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li>Cart</li>
+      </ul>
+    </div>
+  </div>
+
+  <section class="section" style="padding-top:8px">
+    <div class="container">
+      <div class="section-head" style="text-align:left;margin-bottom:28px">
+        <span class="section-eyebrow">Your Selection</span>
+        <h2>Shopping Cart</h2>
+      </div>
+
+      <div class="cart-empty" id="cartEmpty" style="display:none">
+        <i data-lucide="shopping-basket"></i>
+        <h2>Your cart is empty</h2>
+        <p>Looks like you haven't added any fresh lichi yet. Let's fix that!</p>
+        <a href="shop.html" class="btn btn-primary btn-lg">Shop Fresh Lichi</a>
+      </div>
+
+      <div class="cart-layout" id="cartContent" style="display:none">
+        <div>
+          <div id="cartItemsList"></div>
+
+          <p style="margin-top:16px;font-size:14px;color:var(--muted)">
+            <i data-lucide="info" style="width:15px;height:15px;vertical-align:-2px"></i>
+            Prices are recalculated from the freshest data at checkout.
+          </p>
+        </div>
+
+        <div class="cart-summary">
+          <h3>Order Summary</h3>
+          <div class="summary-row"><span>Subtotal</span><span id="cartSubtotal">—</span></div>
+          <div class="summary-row"><span>Delivery</span><span>Calculated at checkout</span></div>
+          <div class="summary-row total"><span>Total</span><span id="cartTotal">—</span></div>
+          <a href="checkout.html" class="btn btn-primary btn-lg btn-block" style="margin-top:18px">Proceed to Checkout</a>
+          <a href="shop.html" class="btn btn-ghost btn-block" style="margin-top:10px">Continue Shopping</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/store.js"></script>
+<script src="assets/js/components.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

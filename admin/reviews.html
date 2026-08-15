@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reviews — Lichi Lover Admin</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/admin.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+window.LL_ASSET_BASE = '../';
+window.LL_ADMIN_PAGE = 'reviews';
+window.LL_ADMIN_TITLE = 'Reviews';
+</script>
+</head>
+<body>
+<div id="admin-header"></div>
+
+<div class="filter-bar">
+    <form style="display:flex;gap:8px">
+        <select id="reviewsStatusSelect">
+            <option value="pending">Pending (0)</option>
+            <option value="approved">Approved</option>
+            <option value="rejected">Rejected</option>
+            <option value="all">All</option>
+        </select>
+    </form>
+</div>
+
+<div class="admin-card">
+    <div class="table-wrap">
+        <table class="data">
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Customer</th>
+                    <th>Rating</th>
+                    <th>Review</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="reviewsBody"></tbody>
+        </table>
+    </div>
+</div>
+
+<div id="admin-footer"></div>
+
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/store.js"></script>
+<script src="../assets/js/admin-components.js"></script>
+<script src="../assets/js/admin-pages.js"></script>
+<script src="../assets/js/admin.js"></script>
+</body>
+</html>

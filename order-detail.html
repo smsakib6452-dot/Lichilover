@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order Details — Lichi Lover</title>
+<meta name="description" content="Order details.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="order-detail.html">
+<link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+window.LL_PAGE = 'order-detail';
+</script>
+</head>
+<body class="page-order-detail">
+<div id="site-header"></div>
+
+<main>
+  <div class="not-found" id="orderNotFound" style="display:none">
+    <h1>404</h1>
+    <h2>Order not found</h2>
+    <p>We could not find this order in your account.</p>
+    <a href="orders.html" class="btn btn-primary">Back to Orders</a>
+  </div>
+
+  <div id="orderContent" style="display:none">
+    <div class="crumbs">
+      <div class="container">
+        <ul>
+          <li><a href="orders.html">My Orders</a></li>
+          <li>Order Details</li>
+        </ul>
+      </div>
+    </div>
+
+    <section class="section" style="padding-top:8px">
+      <div class="container" style="max-width:760px">
+        <div class="checkout-form-card" style="margin-bottom:20px">
+          <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px">
+            <div>
+              <h3 style="color:var(--green-900)" id="odNumber">—</h3>
+              <p style="color:var(--muted);font-size:14px" id="odPlaced">—</p>
+            </div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <span class="badge" id="odStatusBadge">—</span>
+              <span class="badge" id="odPayBadge">—</span>
+            </div>
+          </div>
+          <div style="margin-top:16px">
+            <a href="track-order.html" class="btn btn-primary btn-sm" id="odTrackBtn">Track This Order</a>
+          </div>
+        </div>
+
+        <div class="checkout-form-card" style="margin-bottom:20px">
+          <h3 style="margin-bottom:16px">Items</h3>
+          <div id="odItems"></div>
+          <div class="summary-row"><span>Subtotal</span><span id="odSubtotal">—</span></div>
+          <div class="summary-row"><span>Delivery</span><span id="odDelivery">—</span></div>
+          <div class="summary-row discount" id="odDiscountRow" style="display:none"><span>Discount</span><span>—</span></div>
+          <div class="summary-row total"><span>Total</span><span id="odTotal">—</span></div>
+        </div>
+
+        <div class="checkout-form-card">
+          <h3 style="margin-bottom:16px">Delivery Details</h3>
+          <p id="odCustomer"><strong>—</strong></p>
+          <p style="margin-top:8px" id="odAddress">—</p>
+          <p style="margin-top:8px;color:var(--muted);display:none" id="odNote"></p>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/store.js"></script>
+<script src="assets/js/components.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

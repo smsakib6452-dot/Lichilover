@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Orders — Lichi Lover</title>
+<meta name="description" content="View your Lichi Lover orders.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="canonical" href="orders.html">
+<link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+window.LL_PAGE = 'orders';
+</script>
+</head>
+<body class="page-orders">
+<div id="site-header"></div>
+
+<main>
+  <div class="crumbs">
+    <div class="container">
+      <ul>
+        <li><a href="account.html">My Account</a></li>
+        <li>My Orders</li>
+      </ul>
+    </div>
+  </div>
+
+  <section class="section" style="padding-top:8px">
+    <div class="container">
+      <div class="section-head" style="text-align:left;margin-bottom:24px">
+        <span class="section-eyebrow">History</span>
+        <h2>My Orders</h2>
+      </div>
+
+      <div class="account-nav" style="margin-bottom:28px">
+        <a href="account.html">Profile</a>
+        <a href="orders.html" class="active">My Orders</a>
+        <a href="#" id="logoutLink">Logout</a>
+      </div>
+
+      <div class="empty-state" id="ordersEmpty" style="display:none">
+        <i data-lucide="package-open" style="width:48px;height:48px;color:var(--green-300);margin-bottom:12px"></i>
+        <h3 style="margin-bottom:6px">No orders yet</h3>
+        <p>When you place an order, it will appear here.</p>
+        <a href="shop.html" class="btn btn-primary" style="margin-top:14px">Shop Fresh Lichi</a>
+      </div>
+
+      <div class="table-wrap" id="ordersTable" style="display:none">
+        <table class="data">
+          <thead>
+            <tr>
+              <th>Order</th>
+              <th>Date</th>
+              <th>Items</th>
+              <th>Total</th>
+              <th>Status</th>
+              <th>Payment</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="ordersBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/store.js"></script>
+<script src="assets/js/components.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+(function () {
+  var link = document.getElementById('logoutLink');
+  if (link) {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      window.Store.logoutUser();
+      window.location.href = 'index.html';
+    });
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product — Lichi Lover</title>
+<meta name="description" content="Fresh lichi product details.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="product.html">
+<link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+window.LL_PAGE = 'product';
+</script>
+</head>
+<body class="page-product">
+<div id="site-header"></div>
+
+<main>
+  <div class="not-found" id="productNotFound" style="display:none">
+    <h1>404</h1>
+    <h2>Product not found</h2>
+    <p>The product you are looking for is unavailable.</p>
+    <a href="shop.html" class="btn btn-primary">Back to Shop</a>
+  </div>
+
+  <div id="productContent">
+    <div class="crumbs">
+      <div class="container">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li id="crumbCategory"></li>
+          <li id="crumbProduct">Product</li>
+        </ul>
+      </div>
+    </div>
+
+    <section class="section" style="padding-top:8px">
+      <div class="container">
+        <div class="pd-layout">
+          <!-- Gallery -->
+          <div class="pd-gallery" id="pdGallery"></div>
+
+          <!-- Info -->
+          <div class="pd-info">
+            <h1 id="pdName">Loading...</h1>
+            <div class="pd-meta" id="pdMeta"></div>
+
+            <div class="pd-price">
+              <span class="price" id="pdPrice">—</span>
+              <span class="compare" id="pdCompare" style="display:none"></span>
+              <span class="pd-save" id="pdSave" style="display:none"></span>
+            </div>
+
+            <div class="pd-desc" id="pdDesc"></div>
+
+            <form id="addToCartForm">
+              <input type="hidden" id="selectedVariant" value="0">
+
+              <div class="pd-variants">
+                <h4>Choose Size</h4>
+                <div class="variant-list" id="variantList"></div>
+              </div>
+
+              <div class="pd-qty">
+                <div class="qty-control">
+                  <button type="button" class="qty-minus" aria-label="Decrease quantity">&minus;</button>
+                  <input type="number" id="pdQty" name="qty" value="1" min="1" max="50" inputmode="numeric" aria-label="Quantity">
+                  <button type="button" class="qty-plus" aria-label="Increase quantity">+</button>
+                </div>
+              </div>
+
+              <div class="pd-stock-note">
+                <span class="stock-in" id="pdStockIn" style="display:none"></span>
+                <span class="stock-out" id="pdStockOut" style="display:none"><i data-lucide="alert-circle"></i> Currently out of stock</span>
+              </div>
+
+              <div class="pd-buy">
+                <button type="submit" id="addToCartBtn" class="btn btn-primary btn-lg">
+                  <i data-lucide="shopping-basket"></i> Add to Cart
+                </button>
+                <button type="button" id="buyNowBtn" class="btn btn-lichi btn-lg">
+                  <i data-lucide="zap"></i> Buy Now
+                </button>
+              </div>
+            </form>
+
+            <div class="pd-extra">
+              <div class="pd-extra-item"><i data-lucide="leaf"></i><span>Harvested fresh from trusted orchards.</span></div>
+              <div class="pd-extra-item"><i data-lucide="shield-check"></i><span>Quality checked fruit by fruit before packing.</span></div>
+              <div class="pd-extra-item"><i data-lucide="truck"></i><span>Fast delivery across Bangladesh.</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="pd-tabs" style="margin-top:50px">
+          <div class="pd-tabbar">
+            <button class="pd-tab active" data-tab="tab-reviews">Reviews</button>
+            <button class="pd-tab" data-tab="tab-shipping">Shipping &amp; Care</button>
+          </div>
+
+          <div class="pd-tabpanel" id="tab-reviews">
+            <div style="max-width:760px">
+              <div class="review-list" id="reviewList"></div>
+              <div id="reviewFormWrap"></div>
+            </div>
+          </div>
+
+          <div class="pd-tabpanel" id="tab-shipping" hidden>
+            <div class="prose" style="margin:0">
+              <h2>Shipping</h2>
+              <p>We deliver fresh lichi to all 64 districts of Bangladesh. Delivery charges depend on your location and are shown at checkout.</p>
+              <h2>Storage &amp; Care</h2>
+              <ul>
+                <li>Keep lichi in a cool, dry place.</li>
+                <li>Refrigerate to stay fresh for 2–3 days.</li>
+                <li>Consume within 2 days for the best taste.</li>
+                <li>Wash gently before eating.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Related -->
+        <div class="section" id="relatedSection" style="display:none">
+          <div class="section-head">
+            <span class="section-eyebrow">You may also like</span>
+            <h2>Related Products</h2>
+          </div>
+          <div class="product-grid" id="relatedGrid"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/store.js"></script>
+<script src="assets/js/components.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

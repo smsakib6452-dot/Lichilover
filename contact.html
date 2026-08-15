@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us — Lichi Lover</title>
+<meta name="description" content="Get in touch with Lichi Lover — we are happy to answer your questions.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="contact.html">
+<link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+window.LL_PAGE = 'contact';
+</script>
+</head>
+<body class="page-contact">
+<div id="site-header"></div>
+
+<main>
+  <div class="page-hero">
+    <h1>Contact Us</h1>
+    <p>Questions about your order, delivery or the season? We're here to help.</p>
+  </div>
+
+  <section class="section">
+    <div class="container" style="max-width:920px">
+      <div class="account-layout" style="grid-template-columns:1fr">
+        <div class="checkout-form-card">
+          <h3 style="margin-bottom:18px">Send Us a Message</h3>
+
+          <div id="contactSuccess"></div>
+          <div id="contactGeneralError"></div>
+
+          <form id="contactForm">
+            <div class="form-grid">
+              <div class="form-field">
+                <label>Your Name <span class="req">*</span></label>
+                <input type="text" name="name" required>
+              </div>
+              <div class="form-field">
+                <label>Email <span class="req">*</span></label>
+                <input type="email" name="email" required>
+              </div>
+              <div class="form-field">
+                <label>Phone</label>
+                <input type="tel" name="phone" placeholder="017XXXXXXXX">
+              </div>
+              <div class="form-field">
+                <label>Subject</label>
+                <input type="text" name="subject" placeholder="e.g. Delivery question">
+              </div>
+              <div class="form-field full">
+                <label>Message <span class="req">*</span></label>
+                <textarea name="message" rows="5" required></textarea>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg" style="margin-top:16px">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/store.js"></script>
+<script src="assets/js/components.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

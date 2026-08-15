@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard — Lichi Lover Admin</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/admin.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+window.LL_ASSET_BASE = '../';
+window.LL_ADMIN_PAGE = 'dashboard';
+window.LL_ADMIN_TITLE = 'Dashboard';
+</script>
+</head>
+<body>
+<div id="admin-header"></div>
+
+<div class="stat-grid">
+    <div class="stat-card">
+        <div class="stat-icon"><i data-lucide="banknote"></i></div>
+        <span class="stat-label">Total Sales</span>
+        <span class="stat-value" id="statSales">—</span>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon"><i data-lucide="shopping-cart"></i></div>
+        <span class="stat-label">Total Orders</span>
+        <span class="stat-value" id="statOrders">—</span>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon"><i data-lucide="hourglass"></i></div>
+        <span class="stat-label">Pending Orders</span>
+        <span class="stat-value" id="statPending">—</span>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon"><i data-lucide="package-check"></i></div>
+        <span class="stat-label">Delivered</span>
+        <span class="stat-value" id="statDelivered">—</span>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon"><i data-lucide="users"></i></div>
+        <span class="stat-label">Customers</span>
+        <span class="stat-value" id="statCustomers">—</span>
+    </div>
+    <div class="stat-card">
+        <div class="stat-icon"><i data-lucide="package"></i></div>
+        <span class="stat-label">Products</span>
+        <span class="stat-value" id="statProducts">—</span>
+    </div>
+    <div class="stat-card stat-warn">
+        <div class="stat-icon"><i data-lucide="alert-triangle"></i></div>
+        <span class="stat-label">Low Stock</span>
+        <span class="stat-value" id="statLowStock">—</span>
+    </div>
+    <div class="stat-card stat-danger">
+        <div class="stat-icon"><i data-lucide="x-circle"></i></div>
+        <span class="stat-label">Out of Stock</span>
+        <span class="stat-value" id="statOutOfStock">—</span>
+    </div>
+</div>
+
+<div class="admin-grid-2">
+    <div class="admin-card">
+        <h3>Sales — Last 7 Days</h3>
+        <canvas id="salesChart" height="220"></canvas>
+    </div>
+    <div class="admin-card">
+        <h3>Orders by Status</h3>
+        <canvas id="statusChart" height="220"></canvas>
+    </div>
+</div>
+
+<div class="admin-card">
+    <div class="card-head">
+        <h3>Recent Orders</h3>
+        <a href="orders.html" class="btn btn-ghost btn-sm">View all</a>
+    </div>
+    <div class="table-wrap">
+        <table class="data">
+            <thead>
+                <tr>
+                    <th>Order</th>
+                    <th>Customer</th>
+                    <th>Phone</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th>Payment</th>
+                    <th>Date</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="recentOrdersBody"></tbody>
+        </table>
+    </div>
+</div>
+
+<div id="admin-footer"></div>
+
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/store.js"></script>
+<script src="../assets/js/admin-components.js"></script>
+<script src="../assets/js/admin-pages.js"></script>
+<script src="../assets/js/admin.js"></script>
+</body>
+</html>

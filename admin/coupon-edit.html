@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edit Coupon — Lichi Lover Admin</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/admin.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+window.LL_ASSET_BASE = '../';
+window.LL_ADMIN_PAGE = 'coupon-edit';
+window.LL_ADMIN_TITLE = 'Edit Coupon';
+</script>
+</head>
+<body>
+<div id="admin-header"></div>
+
+<div class="alert alert-error" id="couponNotFound" style="display:none">
+    <i data-lucide="alert-circle"></i>
+    <span>Coupon not found. <a href="coupons.html">Back to Coupons</a></span>
+</div>
+
+<form id="couponForm" class="admin-card" style="max-width:640px">
+    <h3 style="margin-bottom:16px" id="couponFormTitle">Edit Coupon</h3>
+
+    <div class="form-grid">
+        <div class="form-field">
+            <label>Coupon Code</label>
+            <input type="text" name="code" required>
+            <span class="form-error" data-error-for="code" style="display:none"></span>
+        </div>
+        <div class="form-field">
+            <label>Discount Type</label>
+            <select name="discount_type">
+                <option value="percent">Percentage (%)</option>
+                <option value="fixed">Fixed Amount (৳)</option>
+            </select>
+            <span class="form-error" data-error-for="discount_type" style="display:none"></span>
+        </div>
+        <div class="form-field">
+            <label>Discount Value</label>
+            <input type="number" step="0.01" min="0" name="discount_value" required>
+            <span class="form-error" data-error-for="discount_value" style="display:none"></span>
+        </div>
+        <div class="form-field">
+            <label>Minimum Order (৳)</label>
+            <input type="number" step="0.01" min="0" name="min_order" value="0">
+        </div>
+        <div class="form-field">
+            <label>Maximum Discount (৳)</label>
+            <input type="number" step="0.01" min="0" name="max_discount">
+        </div>
+        <div class="form-field">
+            <label>Expiry Date</label>
+            <input type="date" name="expires_at">
+        </div>
+        <div class="form-field">
+            <label>Usage Limit</label>
+            <input type="number" min="0" name="usage_limit" value="0">
+            <span class="form-hint" id="usageHint"></span>
+        </div>
+        <div class="form-field">
+            <label>&nbsp;</label>
+            <label style="display:flex;gap:6px;align-items:center;font-size:14px"><input type="checkbox" name="is_active" value="1"> Active</label>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" style="margin-top:16px">Save Coupon</button>
+</form>
+
+<div id="admin-footer"></div>
+
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/store.js"></script>
+<script src="../assets/js/admin-components.js"></script>
+<script src="../assets/js/admin-pages.js"></script>
+<script src="../assets/js/admin.js"></script>
+</body>
+</html>

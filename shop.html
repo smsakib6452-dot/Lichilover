@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop Fresh Lichi Online — Lichi Lover</title>
+<meta name="description" content="Browse our fresh lichi collection — premium Rajshahi lichi, family packs, gift boxes and combos delivered across Bangladesh.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="shop.html">
+<link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+window.LL_PAGE = 'shop';
+</script>
+</head>
+<body class="page-shop">
+<div id="site-header"></div>
+
+<main>
+  <div class="page-hero">
+    <h1>Shop Fresh Lichi</h1>
+    <p>Hand-picked, naturally sweet lichi delivered fresh across Bangladesh.</p>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="shop-layout">
+        <!-- Sidebar -->
+        <aside class="shop-sidebar" id="shopSidebar">
+          <form method="get" action="shop.html" class="shop-filter-form">
+            <div class="filter-group">
+              <h4>Categories</h4>
+              <ul id="filterCategories"></ul>
+            </div>
+
+            <div class="filter-group">
+              <h4>Price (৳)</h4>
+              <div class="price-range-inputs">
+                <input type="number" name="min_price" min="0" placeholder="Min">
+                <span>–</span>
+                <input type="number" name="max_price" min="0" placeholder="Max">
+              </div>
+            </div>
+
+            <div class="filter-group">
+              <h4>Weight</h4>
+              <ul>
+                <li><label><input type="radio" name="max_weight" value="0.5"> Up to 500 GM</label></li>
+                <li><label><input type="radio" name="max_weight" value="1"> Up to 1 KG</label></li>
+                <li><label><input type="radio" name="max_weight" value="2"> Up to 2 KG</label></li>
+                <li><label><input type="radio" name="max_weight" value="3"> Up to 3 KG</label></li>
+                <li><label><input type="radio" name="max_weight" value="5"> Up to 5 KG</label></li>
+                <li><label><input type="radio" name="max_weight" value="10"> Up to 10 KG</label></li>
+              </ul>
+            </div>
+
+            <div class="filter-group">
+              <h4>Availability</h4>
+              <ul>
+                <li><label><input type="checkbox" name="in_stock" value="1"> In stock only</label></li>
+              </ul>
+            </div>
+
+            <div style="display:flex;gap:8px;margin-top:16px">
+              <button type="submit" class="btn btn-primary btn-block">Apply Filters</button>
+              <a href="shop.html" class="btn btn-ghost btn-block">Reset</a>
+            </div>
+          </form>
+        </aside>
+
+        <!-- Products -->
+        <div>
+          <div class="shop-toolbar">
+            <span class="result-count" id="resultCount">0 products</span>
+            <button class="btn btn-ghost btn-sm shop-filter-toggle" id="shopFiltersToggle" type="button">
+              <i data-lucide="sliders-horizontal"></i> Filters
+            </button>
+            <select id="sortSelect" name="sort" aria-label="Sort products" style="margin-left:auto">
+              <option value="popular">Most Popular</option>
+              <option value="newest">Newest</option>
+              <option value="price_low">Price: Low → High</option>
+              <option value="price_high">Price: High → Low</option>
+              <option value="rating">Top Rated</option>
+            </select>
+          </div>
+
+          <div class="empty-state" id="shopEmpty" style="display:none">
+            <i data-lucide="search-x" style="width:48px;height:48px;color:var(--green-300);margin-bottom:12px"></i>
+            <h3 style="margin-bottom:6px">No products found</h3>
+            <p>Try adjusting your filters or search terms.</p>
+          </div>
+
+          <div class="product-grid" id="shopGrid"></div>
+
+          <nav class="pagination" style="display:flex;gap:8px;justify-content:center;margin-top:32px" id="shopPagination"></nav>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/store.js"></script>
+<script src="assets/js/components.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+(function () {
+  var sortSel = document.getElementById('sortSelect');
+  if (!sortSel) return;
+  sortSel.addEventListener('change', function () {
+    var params = new URLSearchParams(window.location.search);
+    params.set('sort', sortSel.value);
+    window.location.href = 'shop.html' + (params.toString() ? '?' + params.toString() : '');
+  });
+})();
+</script>
+</body>
+</html>

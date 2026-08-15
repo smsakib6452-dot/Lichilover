@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Settings — Lichi Lover Admin</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/admin.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+window.LL_ASSET_BASE = '../';
+window.LL_ADMIN_PAGE = 'settings';
+window.LL_ADMIN_TITLE = 'Settings';
+</script>
+</head>
+<body>
+<div id="admin-header"></div>
+
+<div class="two-col">
+    <div class="admin-card">
+        <h3>Store Settings</h3>
+        <form id="settingsForm">
+            <input type="hidden" name="action" value="settings">
+            <div class="form-grid">
+                <div class="form-field">
+                    <label>Shop Name</label>
+                    <input type="text" name="shop_name">
+                </div>
+                <div class="form-field">
+                    <label>Tagline</label>
+                    <input type="text" name="shop_tagline">
+                </div>
+                <div class="form-field full">
+                    <label>Announcement Bar Text</label>
+                    <input type="text" name="announcement">
+                </div>
+                <div class="form-field">
+                    <label>Shop Email</label>
+                    <input type="email" name="shop_email">
+                </div>
+                <div class="form-field">
+                    <label>Shop Phone</label>
+                    <input type="text" name="shop_phone">
+                </div>
+                <div class="form-field full">
+                    <label>Shop Address</label>
+                    <input type="text" name="shop_address">
+                </div>
+                <div class="form-field">
+                    <label>WhatsApp Number</label>
+                    <input type="text" name="whatsapp_number" placeholder="8801712345678">
+                    <span class="form-hint">International format without +. Leave empty to hide the WhatsApp button.</span>
+                </div>
+                <div class="form-field">
+                    <label>Facebook URL</label>
+                    <input type="text" name="facebook_url">
+                </div>
+                <div class="form-field">
+                    <label>Instagram URL</label>
+                    <input type="text" name="instagram_url">
+                </div>
+                <div class="form-field full">
+                    <label>Hero Headline</label>
+                    <input type="text" name="hero_headline">
+                </div>
+                <div class="form-field full">
+                    <label>Hero Subheadline</label>
+                    <textarea name="hero_subheadline" rows="2"></textarea>
+                </div>
+                <div class="form-field full">
+                    <label>About Text</label>
+                    <textarea name="about_text" rows="3"></textarea>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" style="margin-top:16px">Save Settings</button>
+        </form>
+    </div>
+
+    <div>
+        <div class="admin-card" id="password">
+            <h3>Change Password</h3>
+            <form id="passwordForm">
+                <input type="hidden" name="action" value="password">
+                <div class="form-field" style="margin-bottom:12px">
+                    <label>Current Password</label>
+                    <input type="password" name="current_password" required>
+                    <span class="form-error" data-error-for="current_password" style="display:none"></span>
+                </div>
+                <div class="form-field" style="margin-bottom:12px">
+                    <label>New Password</label>
+                    <input type="password" name="new_password" placeholder="At least 8 characters" required>
+                    <span class="form-error" data-error-for="new_password" style="display:none"></span>
+                </div>
+                <div class="form-field" style="margin-bottom:14px">
+                    <label>Confirm New Password</label>
+                    <input type="password" name="confirm_password" required>
+                    <span class="form-error" data-error-for="confirm_password" style="display:none"></span>
+                </div>
+                <button type="submit" class="btn btn-primary">Update Password</button>
+            </form>
+        </div>
+
+        <div class="admin-card">
+            <h3>Payment Configuration</h3>
+            <p style="font-size:14px;margin-bottom:8px">
+                Payment mode: <span class="badge badge-pending">demo</span>
+            </p>
+            <p style="font-size:13px;color:var(--muted)">
+                The site is in <strong>demo mode</strong> — payments are simulated and clearly labelled. No real money is charged.
+            </p>
+            <p style="font-size:13px;color:var(--muted);margin-top:8px">
+                bKash credentials: not configured<br>
+                Nagad credentials: not configured<br>
+                WhatsApp number: configured
+            </p>
+        </div>
+    </div>
+</div>
+
+<div id="admin-footer"></div>
+
+<script src="../assets/js/data.js"></script>
+<script src="../assets/js/store.js"></script>
+<script src="../assets/js/admin-components.js"></script>
+<script src="../assets/js/admin-pages.js"></script>
+<script src="../assets/js/admin.js"></script>
+</body>
+</html>
