@@ -9,10 +9,13 @@ server other than any static file host.
 
 ## Demo accounts
 
-| Role | Email | Password |
-| --- | --- | --- |
-| Admin | `admin@lichilover.com` | `admin123` |
-| Customer | `customer@lichilover.com` | `customer123` |
+| Role | Email |
+| --- | --- |
+| Admin | `admin@lichilover.com` |
+| Customer | `customer@lichilover.com` |
+
+Passwords are only defined in the development seed (`assets/js/data.js`) and are
+not shown on any public page.
 
 ## Structure
 
