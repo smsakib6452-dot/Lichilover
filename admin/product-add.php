@@ -126,9 +126,9 @@ require_once __DIR__ . '/includes/header.php';
             </div>
             <div class="form-field full <?= isset($errors['image']) ? 'has-error' : '' ?>">
                 <label>Image URL</label>
-                <input type="url" name="image" value="<?= e(old('image')) ?>" placeholder="https://images.unsplash.com/...">
+                <input type="url" name="image" value="<?= e(old('image')) ?>" placeholder="https://images.pexels.com/photos/16820482/pexels-photo-16820482.jpeg?auto=compress&cs=tinysrgb&w=900">
                 <?php if (isset($errors['image'])): ?><span class="form-error"><?= e($errors['image']) ?></span><?php endif; ?>
-                <span class="form-hint">Leave empty to use a default fruit image. Use any image URL (Unsplash recommended).</span>
+                <span class="form-hint">Leave empty to use a real lichi photo. Paste any Pexels or Unsplash image URL.</span>
             </div>
             <div class="form-field">
                 <label>Compare Price (৳)</label>

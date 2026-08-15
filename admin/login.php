@@ -4,7 +4,7 @@ declare(strict_types=1);
 require_once dirname(__DIR__) . '/includes/functions.php';
 
 if (is_admin_logged_in()) {
-    redirect('index.php');
+    redirect('admin/index.php');
 }
 
 $errors = [];
@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($admin && password_verify($password, $admin['password'])) {
             login_admin($admin);
             flash('success', 'Welcome back, ' . $admin['name'] . '!');
-            redirect('index.php');
+            redirect('admin/index.php');
         }
         $errors['general'] = 'Invalid admin credentials.';
     }

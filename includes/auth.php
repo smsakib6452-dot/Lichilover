@@ -75,7 +75,7 @@ function require_login(): void
 function require_admin(): void
 {
     if (!is_admin_logged_in()) {
-        redirect('login.php');
+        redirect('admin/login.php');
     }
 }
 

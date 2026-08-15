@@ -158,7 +158,7 @@ require_once __DIR__ . '/includes/header.php';
             </div>
             <div class="form-field full <?= isset($errors['image']) ? 'has-error' : '' ?>">
                 <label>Image URL</label>
-                <input type="url" name="image" value="<?= e($product['image']) ?>">
+                <input type="url" name="image" value="<?= e($product['image']) ?>" placeholder="https://images.pexels.com/photos/16820482/pexels-photo-16820482.jpeg?auto=compress&cs=tinysrgb&w=900">
                 <?php if (isset($errors['image'])): ?><span class="form-error"><?= e($errors['image']) ?></span><?php endif; ?>
                 <div style="margin-top:8px"><img src="<?= e($product['image'] ?: image_url('lychee_live')) ?>" alt="" style="width:90px;height:90px;border-radius:10px;object-fit:cover"></div>
             </div>

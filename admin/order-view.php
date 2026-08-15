@@ -45,7 +45,7 @@ require_once __DIR__ . '/includes/header.php';
 <div class="filter-bar">
     <a href="<?= url('admin/orders.php') ?>" class="btn btn-ghost btn-sm">&larr; Back to Orders</a>
     <div class="spacer"></div>
-    <a href="<?= url('index.php') ?>" class="btn btn-ghost btn-sm">Back to Dashboard</a>
+    <a href="<?= url('admin/index.php') ?>" class="btn btn-ghost btn-sm">Back to Dashboard</a>
 </div>
 
 <div class="order-detail-grid">
