@@ -396,6 +396,19 @@ input, select, textarea { font-family: inherit; font-size: 15px; }
 .form-error { color: var(--lichi-600); font-size: 13px; }
 .form-field.has-error input, .form-field.has-error select, .form-field.has-error textarea { border-color: var(--lichi-600); }
 
+/* Password visibility toggle */
+.pw-wrap { position: relative; width: 100%; }
+.pw-wrap input { padding-right: 44px; }
+.pw-toggle {
+  position: absolute; top: 50%; right: 6px; transform: translateY(-50%);
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 34px; height: 34px; border: none; border-radius: 8px;
+  background: transparent; color: var(--muted); cursor: pointer;
+  transition: color .15s, background .15s;
+}
+.pw-toggle:hover { color: var(--ink-soft); background: rgba(0,0,0,.04); }
+.pw-toggle.active { color: var(--green-600); }
+
 @media (min-width: 640px) { .form-grid { grid-template-columns: 1fr 1fr; } .form-grid .full { grid-column: 1 / -1; } }
 
 .pay-methods { display: grid; gap: 10px; }
