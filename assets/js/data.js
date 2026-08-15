@@ -126,7 +126,7 @@ window.LL_SEED = {
   ],
 
   coupons: [
-    { id: 1, code: 'WELCOME10', discount_type: 'percent', discount_value: 10.00, min_order: 500.00, max_discount: 200.00, expires_at: '2030-12-31', usage_limit: 1000, used_count: 0, is_active: 1 },
+    { id: 1, code: 'WELCOME10', discount_type: 'percent', discount_value: 10.00, min_order: 500.00, max_discount: 200.00, expires_at: '2030-12-31', usage_limit: 1000, used_count: 1, is_active: 1 },
     { id: 2, code: 'SAVE50', discount_type: 'fixed', discount_value: 50.00, min_order: 1000.00, max_discount: null, expires_at: '2030-12-31', usage_limit: 500, used_count: 0, is_active: 1 },
     { id: 3, code: 'FRESH15', discount_type: 'percent', discount_value: 15.00, min_order: 2000.00, max_discount: 500.00, expires_at: '2030-12-31', usage_limit: 300, used_count: 0, is_active: 1 }
   ],
@@ -139,6 +139,98 @@ window.LL_SEED = {
   users: [
     { id: 1, name: 'Demo Customer', email: 'customer@lichilover.com', phone: '01712345678', password: 'customer123', is_active: 1 },
     { id: 2, name: 'Rahim Uddin', email: 'rahim@example.com', phone: '01812345678', password: 'customer123', is_active: 1 }
+  ],
+
+  // DEMO ORDERS — so the admin panel shows orders from the demo customer in
+  // any browser. `_days_ago` and missing order_number/created_at are filled
+  // in by store.js at seed time (order_number = LL-<year>-00000X, created_at
+  // spread over the last week so the dashboard chart has data).
+  orders: [
+    {
+      id: 1,
+      user_id: 1,
+      full_name: 'Demo Customer',
+      phone: '01712345678',
+      email: 'customer@lichilover.com',
+      division: 'Chattogram',
+      district: 'Chattogram',
+      upazila: 'Panchlaish',
+      address: 'House 12, Road 5, Block C, Panchlaish',
+      delivery_note: 'Please call me when the delivery rider is near.',
+      delivery_zone_id: 1,
+      subtotal: 1300.00,
+      delivery_fee: 60.00,
+      discount: 0,
+      coupon_code: null,
+      total: 1360.00,
+      status: 'delivered',
+      payment_method: 'cod',
+      payment_status: 'paid',
+      items: [
+        { variant_id: 2, product_id: 1, product_name: 'Premium Rajshahi Lichi', slug: 'premium-rajshahi-lichi', image: 'https://images.unsplash.com/photo-1587735243615-c03f25aaff15?auto=format&fit=crop&w=900&q=80', variant_name: '2 KG', weight: 2.00, unit_price: 650.00, compare_price: 720.00, quantity: 2, line_total: 1300.00 }
+      ],
+      payment: null,
+      _days_ago: 6
+    },
+    {
+      id: 2,
+      user_id: 1,
+      full_name: 'Demo Customer',
+      phone: '01712345678',
+      email: 'customer@lichilover.com',
+      division: 'Dhaka',
+      district: 'Dhaka',
+      upazila: 'Dhanmondi',
+      address: 'Apartment 4B, House 23, Road 7, Dhanmondi',
+      delivery_note: '',
+      delivery_zone_id: 12,
+      subtotal: 1500.00,
+      delivery_fee: 100.00,
+      discount: 150.00,
+      coupon_code: 'WELCOME10',
+      total: 1450.00,
+      status: 'processing',
+      payment_method: 'cod',
+      payment_status: 'pending',
+      items: [
+        { variant_id: 5, product_id: 3, product_name: 'Premium Lichi Box', slug: 'premium-lichi-box', image: 'https://images.unsplash.com/photo-1559181567-c3190ca9959b?auto=format&fit=crop&w=900&q=80', variant_name: '5 KG', weight: 5.00, unit_price: 1500.00, compare_price: 1700.00, quantity: 1, line_total: 1500.00 }
+      ],
+      payment: null,
+      _days_ago: 3
+    },
+    {
+      id: 3,
+      user_id: 2,
+      full_name: 'Rahim Uddin',
+      phone: '01812345678',
+      email: 'rahim@example.com',
+      division: 'Chattogram',
+      district: "Cox's Bazar",
+      upazila: "Cox's Bazar Sadar",
+      address: 'House 3, Kolatoli Road',
+      delivery_note: 'Leave the parcel at the hotel reception.',
+      delivery_zone_id: 2,
+      subtotal: 540.00,
+      delivery_fee: 120.00,
+      discount: 0,
+      coupon_code: null,
+      total: 660.00,
+      status: 'confirmed',
+      payment_method: 'bkash',
+      payment_status: 'paid',
+      items: [
+        { variant_id: 7, product_id: 5, product_name: 'Fresh Lichi Mini Pack', slug: 'fresh-lichi-mini-pack', image: 'https://images.unsplash.com/photo-1595855759920-86582396756a?auto=format&fit=crop&w=900&q=80', variant_name: '500 GM', weight: 0.50, unit_price: 180.00, compare_price: 200.00, quantity: 3, line_total: 540.00 }
+      ],
+      payment: {
+        method: 'bkash',
+        payment_id: 'DEMO-BKASH-LL-000003',
+        transaction_id: '8G7F2H9J1K',
+        amount: 660.00,
+        status: 'paid',
+        gateway_response: { status: 'paid', transaction_id: '8G7F2H9J1K', demo: true, method: 'bkash' }
+      },
+      _days_ago: 1
+    }
   ],
 
   reviews: [

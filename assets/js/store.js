@@ -9,14 +9,46 @@
   'use strict';
 
   var LS_PREFIX = 'll_';
-  var DB_VERSION = '1.0';
+  var DB_VERSION = '1.1';
   var db = {};
+  // In-memory fallback for browsers that block localStorage (private mode,
+  // strict privacy settings). Keeps the site functional for the page session.
+  var memory = {};
+  var hasStorage = (function () {
+    try {
+      var k = '__ll_test__';
+      localStorage.setItem(k, '1');
+      localStorage.removeItem(k);
+      return true;
+    } catch (e) {
+      return false;
+    }
+  })();
 
   /* ---------- Persistence helpers ---------- */
 
+  function storageGet(key) {
+    if (hasStorage) {
+      try { return localStorage.getItem(key); } catch (e) { /* ignore */ }
+    }
+    return Object.prototype.hasOwnProperty.call(memory, key) ? memory[key] : null;
+  }
+  function storageSet(key, value) {
+    if (hasStorage) {
+      try { localStorage.setItem(key, value); return; } catch (e) { /* ignore */ }
+    }
+    memory[key] = value;
+  }
+  function storageRemove(key) {
+    if (hasStorage) {
+      try { localStorage.removeItem(key); } catch (e) { /* ignore */ }
+    }
+    delete memory[key];
+  }
+
   function load(key, fallback) {
     try {
-      var raw = localStorage.getItem(LS_PREFIX + key);
+      var raw = storageGet(LS_PREFIX + key);
       if (raw === null) return fallback;
       return JSON.parse(raw);
     } catch (e) {
@@ -25,9 +57,7 @@
   }
 
   function save(key, value) {
-    try {
-      localStorage.setItem(LS_PREFIX + key, JSON.stringify(value));
-    } catch (e) { /* storage full / unavailable */ }
+    storageSet(LS_PREFIX + key, JSON.stringify(value));
   }
 
   function uid() {
@@ -67,7 +97,21 @@
       if (!r.created_at) r.created_at = nowIso();
     });
     save('reviews', reviews);
-    save('orders', []);
+    // Orders: seed demo orders (incl. the demo customer's) so the admin panel
+    // shows real data in any browser. created_at is spread over the last week
+    // so the dashboard chart has data; order numbers get a fresh year prefix.
+    var orders = JSON.parse(JSON.stringify(seed.orders || []));
+    var year = new Date().getFullYear();
+    orders.forEach(function (o, i) {
+      if (!o.created_at) {
+        var ago = Number(o._days_ago) || 0;
+        o.created_at = new Date(Date.now() - ago * 86400000).toISOString();
+      }
+      o.updated_at = o.created_at;
+      delete o._days_ago;
+      if (!o.order_number) o.order_number = 'LL-' + year + '-' + ('000000' + (i + 1)).slice(-6);
+    });
+    save('orders', orders);
     save('messages', []);
     save('newsletter', []);
     save('seeded', DB_VERSION);
@@ -373,7 +417,7 @@
     return { success: true, user: user };
   }
   function logoutUser() {
-    localStorage.removeItem(LS_PREFIX + 'session_user');
+    storageRemove(LS_PREFIX + 'session_user');
   }
   function updateProfile(id, data) {
     var list = getCollection('users');
@@ -430,7 +474,7 @@
     return { success: false, message: 'Invalid admin credentials.' };
   }
   function logoutAdmin() {
-    localStorage.removeItem(LS_PREFIX + 'session_admin');
+    storageRemove(LS_PREFIX + 'session_admin');
   }
   function changeAdminPassword(id, current, newPass) {
     var list = getCollection('admins');
@@ -571,13 +615,14 @@
     var variants = getCollection('variants');
     var products = getCollection('products');
     (order.items).forEach(function (item) {
+      var qty = Number(item.quantity) || Number(item.qty) || 0;
       variants.forEach(function (v) {
-        if (v.id === item.variant_id && v.stock_qty > 0) v.stock_qty = Math.max(0, Number(v.stock_qty) - item.qty);
+        if (v.id === item.variant_id && v.stock_qty > 0) v.stock_qty = Math.max(0, Number(v.stock_qty) - qty);
       });
       products.forEach(function (p) {
         if (p.id === item.product_id) {
-          p.stock_qty = Math.max(0, Number(p.stock_qty) - item.qty);
-          p.sold_count = Number(p.sold_count) + item.qty;
+          p.stock_qty = Math.max(0, Number(p.stock_qty) - qty);
+          p.sold_count = Number(p.sold_count) + qty;
         }
       });
     });
